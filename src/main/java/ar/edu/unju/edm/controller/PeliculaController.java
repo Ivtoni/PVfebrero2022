@@ -49,7 +49,7 @@ public class PeliculaController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/cliente";
+		return "redirect:/pelicula";
 	}
 	@GetMapping("/pelicula/eliminar/{codPeli}")
 	public String eliminarPelicula(Model model, @PathVariable(name="codPeli") int codPeli) {

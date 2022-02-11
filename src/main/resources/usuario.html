@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<htmlxmlns:th="http://www.thymeleaf.org">
+<head> 
+<tittle>DESPENSA</tittle>
+</head>
+<body>
+<div class="container">
+<div>> class="form">
+<h1>Formulario de Carga de Cliente</h1>
+	<form id="formUsuario" th:object="${unUser}" th:action="${editMode}?@{/cliente/modificar}:@{/registro/guardar}" method="post">
+			<div class="row mb-3">
+				<label for="dni" class="col-sm-2 col-form-label">Documento</label> 
+				<div class="col-sm-10">
+				<input type="text" id="dni" th:field="*{dni}" class="form-control">
+				<div class="alert alert-danger" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}">Name	Error</div>
+				</div>
+			</div>
+		<div class="row mb-3">
+			<label for="apellido" class="col-sm-2 col-form-label">Apellido</label>
+			<div class="col-sm-10">
+			<input type="text" id="apellido" th:field="*{apellido}" class="form-control">
+			<div class="alert alert-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Name Error</div>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<label for="nombre" class="col-sm2 col.form-label">Nombre</label>
+			<div class="col-sm-10">
+			<input type="text" id="nombre" th:field="*{nombre}" class="form-control">
+			<div class="alert alert-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Name Error</div>
+			</div>
+		</div>
+		<div  class="row mb-3">
+			<label for="fechaNac" class="col.sm2 col.form-label">Fecha Nacimiento</label>
+			<div class="col-sm-10">
+			<input type="date" id="fechaNac" th:field="*{fechaNac}" class="form-control">
+			<div class="alret alert-danger" th:if="${#fields.hasErrors('fechaNac')}" th:errors="*{fechaNac}">Name Error</div>
+			</div>
+		</div>
+		<div class="row mb.3">
+			<label for="password" class="col.sm2 col.form-label">Contraseña</label>
+			<div class="col.sm.10">
+			<input type="password" id="password" th:field="*{password}" class="form-control">
+			<div class="alert alert-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Name Error</div>
+			</div>
+		</div> 
+		<div class="row mb.3">
+				<label for="tipo" class="col-sm-2 col-form-label">Tipo</label> 
+			<div class="col-sm-10">
+			     <select id="tipo" th:field="*{tipoUsuario}" class="form-control" > 
+			          <option value="Cliente">Cliente</option>
+			          <option value="Adminin">Admin</option>
+			     </select>
+			</div>
+		</div>
+		<div>
+			<input type="submit" class="buttons" th:value="${editMode}?'Modificar Cliente':'Crear Cliente'">
+		</div>
+	</form>
+</div>
+</div>
+</body>

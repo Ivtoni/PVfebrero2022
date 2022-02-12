@@ -22,6 +22,8 @@ public class Usuario {
 	@Column
 	private String nombre;
 	@Column
+	private String mail;
+	@Column
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaNac;
 	@Column
@@ -34,12 +36,13 @@ public class Usuario {
 	}
 
 	
-	public Usuario(String dni, String apellido, String nombre, LocalDate fechaNac, String password,
+	public Usuario(String dni, String apellido, String nombre, String mail, LocalDate fechaNac, String password,
 			String tipoUsuario) {
 		super();
 		this.dni = dni;
 		this.apellido = apellido;
 		this.nombre = nombre;
+		this.mail = mail;
 		this.fechaNac = fechaNac;
 		this.password = password;
 		this.tipoUsuario = tipoUsuario;
@@ -68,6 +71,13 @@ public class Usuario {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 
 	public LocalDate getFechaNac() {

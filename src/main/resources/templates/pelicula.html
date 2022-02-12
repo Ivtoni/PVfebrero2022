@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<htmlxmlns : th="http://www.thymeleaf.org">
+<head>
+	<tittle>ADMINISTRAR CINE</tittle>
+</head>
+<body>
+	<h1>Lista de Peliculas</h1>
+	<table cellpading="7" border="2" bgcolor="green"->
+		<tr>
+			<th>Nombre</th>
+			<th>Descripción</th>
+			<th>Duración</th>
+			<th>Actores</th>
+			<th>Director</th>
+		</tr>
+		<tr th:each="peli:${lista}" >
+			<td th:text="${peli.nombre}"></td>
+			<td th:text="${peli.descripcion}"></td>
+			<td th:text="${peli.duracion}"></td>
+			<td th:text="${peli.actor}"></td>
+			<td th:text="${peli.direcotr}"></td>
+		</tr>
+	</table>
+			

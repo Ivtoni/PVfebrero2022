@@ -5,8 +5,8 @@
 </head>
 <body>
 <div class="container">
-<div> class="form">
-<h1>Formulario de Carga de Cliente</h1>
+<div class="form">
+<h1>Formulario de Registro</h1>
 	<form id="formUsuario" th:object="${unUser}" th:action="@{/registro/guardar}" method="post">
 			<div class="row mb-3">
 				<label for="dni" class="col-sm-2 col-form-label">Documento</label> 
@@ -28,6 +28,11 @@
 			<input type="text" id="nombre" th:field="*{nombre}" class="form-control">
 			<div class="alert alert-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Name Error</div>
 			</div>
+		</div>
+		<div class="row mb-3">
+			<label for="correo" class="col-sm2 col.form-label">Mail</label>
+			<div class="col-sm-10">
+			<input type="text" id="correo" th:field="*{mail}" class="form-control">
 		</div>
 		<div  class="row mb-3">
 			<label for="fechaNac" class="col.sm2 col.form-label">Fecha Nacimiento</label>

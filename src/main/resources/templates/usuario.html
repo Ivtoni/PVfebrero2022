@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <htmlxmlns:th="http://www.thymeleaf.org">
 <head> 
-<tittle>DESPENSA</tittle>
+<tittle>ADMINISTRADOR</tittle>
 </head>
 <body>
 <div class="container">
 <div>> class="form">
 <h1>Formulario de Carga de Cliente</h1>
-	<form id="formUsuario" th:object="${unUser}" th:action="${editMode}?@{/cliente/modificar}:@{/registro/guardar}" method="post">
+	<form id="formUsuario" th:object="${unUser}" th:action="${editMode}?@{/usuario/modificar}:@{/registro/guardar}" method="post">
 			<div class="row mb-3">
 				<label for="dni" class="col-sm-2 col-form-label">Documento</label> 
 				<div class="col-sm-10">
@@ -26,7 +26,12 @@
 			<label for="nombre" class="col-sm2 col.form-label">Nombre</label>
 			<div class="col-sm-10">
 			<input type="text" id="nombre" th:field="*{nombre}" class="form-control">
-			<div class="alert alert-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Name Error</div>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<label for="correo" class="col-sm2 col.form-label">Mail</label>
+			<div class="col-sm-10">
+			<input type="text" id="correo" th:field="*{mail}" class="form-control">
 			</div>
 		</div>
 		<div  class="row mb-3">
@@ -57,5 +62,23 @@
 		</div>
 	</form>
 </div>
+</div>
+<div>
+	<table cellpading="7" border="2" bgcolor="green"->
+		<tr> 
+			<th>DNI</th>
+			<th>APELLIDO</th>
+			<th>NOMBRE</th>
+			<th>MAIL</th>
+			<th>FECHA DE NACIMIENTO</th>
+		</tr>
+		<tr th:each="user:${lista}">
+			<td th:text="${user.dni}"></td>
+			<td th:text="${user.apellido}"></td>
+			<td th:tex="${user.mail}"></td>
+			<td th:text="${user.nombre}"></td>
+			<td th:text="${user.fechaNac}"></td>	
+		</tr>
+	</table>
 </div>
 </body>

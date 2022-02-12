@@ -3,7 +3,7 @@ package ar.edu.unju.edm.service.imp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.edm.model.Usuario;
@@ -20,16 +20,17 @@ public class UsuarioServiceMySQL implements IUsuarioService{
 	@Override
 	public void guardarUsuario(Usuario unUsuario) {
 		// TODO Auto-generated method stub
-		String pw = unUsuario.getPassword();
-		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
-		unUsuario.setPassword(bCryptPasswordEncoder.encode(pw));
+	//String pw = unUsuario.getPassword();
+		//BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
+	//	unUsuario.setPassword(bCryptPasswordEncoder.encode(pw));
+	
 		usuarioDAO.save(unUsuario);
 	}
 
 	@Override
 	public void eliminarUsuario(String dni) throws Exception {
 		// TODO Auto-generated method stub
-		Usuario usuarioAEliminar = usuarioDAO.findById(dni).orElseThrow(()->new Exception("El Cliente no fue encontrado"));
+		Usuario usuarioAEliminar = usuarioDAO.findById(dni).orElseThrow(()->new Exception("El Usuario no fue encontrado"));
 		usuarioDAO.delete(usuarioAEliminar);
 	}
 	private void cambiarUsuario(Usuario desde, Usuario hacia) {
@@ -42,7 +43,7 @@ public class UsuarioServiceMySQL implements IUsuarioService{
 	@Override
 	public void modificarUsuario(Usuario unUsuario) throws Exception {
 		// TODO Auto-generated method stub
-		Usuario usuarioAModificar = usuarioDAO.findById(unUsuario.getDni()).orElseThrow(()->new Exception("El Cliente no fue encontrado"));
+		Usuario usuarioAModificar = usuarioDAO.findById(unUsuario.getDni()).orElseThrow(()->new Exception("El Usuario no fue encontrado"));
 		cambiarUsuario(unUsuario, usuarioAModificar);
 		usuarioDAO.save(usuarioAModificar);
 	}
@@ -56,7 +57,7 @@ public class UsuarioServiceMySQL implements IUsuarioService{
 	@Override
 	public Usuario encontrarUsuario(String dni) throws Exception {
 		// TODO Auto-generated method stub
-		return usuarioDAO.findById(dni).orElseThrow(()->new Exception("el cliente no fue encontrado"));
+		return usuarioDAO.findById(dni).orElseThrow(()->new Exception("el Usuario no fue encontrado"));
 	}
 
 	@Override

@@ -22,7 +22,7 @@ public class PeliculaController {
 			return "pelicula";
 }
 	@PostMapping("/pelicula/guardar")
-	public String guardarPelicula(@ModelAttribute ("unCliente") Pelicula unaPelicula, Model model) {
+	public String guardarPelicula(@ModelAttribute ("unaPeli") Pelicula unaPelicula, Model model) {
 		unaPeli.guardarPeli(unaPelicula);
 		return "redirect:/cliente";
 }
@@ -60,4 +60,5 @@ public class PeliculaController {
 		}			
 		return "redirect:/pelicula";
 	}
+
 }

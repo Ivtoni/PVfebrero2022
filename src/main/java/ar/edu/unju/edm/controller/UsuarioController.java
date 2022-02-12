@@ -9,12 +9,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import ar.edu.unju.edm.model.Usuario;
+import ar.edu.unju.edm.services.IPeliculaService;
 import ar.edu.unju.edm.services.IUsuarioService;
 
 @Controller
 public class UsuarioController {
 	@Autowired 
 	IUsuarioService unUsuario;
+	@Autowired
+	IPeliculaService unaPeli;
 	
 	@GetMapping ("/registro")
 	public String registrarUsuario(Model model) {
@@ -24,22 +27,22 @@ public class UsuarioController {
 	@PostMapping ("/registro/guardar")
 	public String guardarUsuario(@ModelAttribute ("unUser") Usuario unUsrio, Model model) {
 		unUsuario.guardarUsuario(unUsrio);
-		return "redirect:/login";
+		return "redirect:/usuario";
 }
 	@GetMapping ("/usuario")
 	public String registrarUsuarioAdmin(Model model) {
 		model.addAttribute("unUser", unUsuario.crearUsuario());
-		return "principal";
+		return "usuario";
 	}
 	@PostMapping ("/usuario/guardar")
 	public String guardarUsuarioAdmin(@ModelAttribute ("unUser") Usuario unUsrio, Model model) {
 		unUsuario.guardarUsuario(unUsrio);
-		return "redirect:/login";
+		return "redirect:/usuario";
 }
 	@GetMapping ("usuario/editar/{dni}")
 	public String editarUsuario(Model model, @PathVariable(name="dni") String dni) throws Exception {
 		try {
-			Usuario usuarioEncontrado = unUsuario.encontrarUsuario(null);
+			Usuario usuarioEncontrado = unUsuario.encontrarUsuario(dni);
 			model.addAttribute("unUser", usuarioEncontrado);	
 			model.addAttribute("editMode", "true");
 		}
@@ -74,4 +77,10 @@ public class UsuarioController {
 		}
 		return "redirect:/usuario";
 	}
+	@GetMapping ("/lista")
+	public String mostrarLista(Model model) {
+		model.addAttribute("lista", unUsuario.obtenerTodosUsuarios());
+		model.addAttribute("listapeli", unaPeli.obtenerTodasPelis());
+		return "mostrar";
+}
 }

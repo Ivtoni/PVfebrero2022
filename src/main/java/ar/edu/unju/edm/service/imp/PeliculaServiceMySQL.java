@@ -35,7 +35,7 @@ public class PeliculaServiceMySQL implements IPeliculaService{
 	@Override
 	public void modificarPeli(Pelicula unaPeli) throws Exception {
 		// TODO Auto-generated method stub
-		Pelicula peliAModificar= peliDAO.findById(unaPeli.getCodPeli()).orElseThrow(()->new Exception("El Cliente no fue encontrado"));
+		Pelicula peliAModificar = peliDAO.findById(unaPeli.getCodPeli()).orElseThrow(()->new Exception("La Pelicula no fue encontrada"));
 		cambiarPeli(unaPeli, peliAModificar);
 		peliDAO.save(peliAModificar);
 	}
@@ -57,7 +57,7 @@ public class PeliculaServiceMySQL implements IPeliculaService{
 	@Override
 	public Pelicula encontrarPeli(int codPeli) throws Exception {
 		// TODO Auto-generated method stub
-		return peliDAO.findById(codPeli).orElseThrow(()->new Exception("el cliente no fue encontrado"));
+		return peliDAO.findById(codPeli).orElseThrow(()->new Exception("La pelicula no fue encontrada"));
 	}
 
 	@Override

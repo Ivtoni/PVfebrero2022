@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org">
+<head>
+	<tittle>Peliculas Disponibles</tittle>
+</head>
+<body>
+	<h3>Estrenos</h3>
+	<table cellpading="7" border="2" bgcolor="blue">
+		<tr>
+			<th>NOMBRE</th>
+			<th>DESCRIPCION</th>
+			<th>DURACION</th>
+			<th>REPARTO</th>
+			<th>DIRECTOR/A</th>
+		</tr>
+		<tr th:each="peli:${listapeli}" >
+			<td th:text="${peli.nombre}"></td>
+			<td th:text="${peli.descripcion}"></td>
+			<td th:text="${peli.duracion}"></td>
+			<td th:text="${peli.actor}"></td>
+			<td th:text="${peli.director}"></td>
+	</table>
+	<div>
+		<a href="/login">Cerrar Sesión</a>	
+	</div>
+</body>
+</html>

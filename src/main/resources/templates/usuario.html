@@ -5,9 +5,9 @@
 </head>
 <body>
 <div class="container">
-<div>> class="form">
+<div class="form">
 <h1>Formulario de Carga de Cliente</h1>
-	<form id="formUsuario" th:object="${unUser}" th:action="${editMode}?@{/usuario/modificar}:@{/registro/guardar}" method="post">
+	<form th:object="${unUser}" th:action="${editMode}?@{/usuario/modificar}:@{/usuario/guardar}" method="post">
 			<div class="row mb-3">
 				<label for="dni" class="col-sm-2 col-form-label">Documento</label> 
 				<div class="col-sm-10">
@@ -53,12 +53,12 @@
 			<div class="col-sm-10">
 			     <select id="tipo" th:field="*{tipoUsuario}" class="form-control" > 
 			          <option value="Cliente">Cliente</option>
-			          <option value="Adminin">Admin</option>
+			          <option value="Admin">Admin</option>
 			     </select>
 			</div>
 		</div>
 		<div>
-			<input type="submit" class="buttons" th:value="${editMode}?'Modificar Cliente':'Crear Cliente'">
+			<input type="submit" class="buttons" th:value="${editMode}?'Modificar Usuario':'Crear Usuario'">
 		</div>
 	</form>
 </div>

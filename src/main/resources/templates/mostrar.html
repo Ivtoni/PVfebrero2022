@@ -10,15 +10,17 @@
 <body>
 	<div>
 			<h1>Lista de Peliculas</h1>
-	<table cellpading="7" border="2" bgcolor="green"->
+	<table cellpading="7" border="2" bgcolor="green">
 		<tr>
+			<th>ID</th>
 			<th>NOMBRE</th>
 			<th>DESCRIPCION</th>
 			<th>DURACION</th>
 			<th>ACTORES</th>
 			<th>DIRECTOR</th>
 		</tr>
-		<tr th:each="peli:${listapeli}" >
+		<tr th:each="peli :${listapeli}" >
+			<td th:text="${peli.codPeli}"></td>
 			<td th:text="${peli.nombre}"></td>
 			<td th:text="${peli.descripcion}"></td>
 			<td th:text="${peli.duracion}"></td>
@@ -32,6 +34,10 @@
 	</table>
 	</div>
 	<div>
+		<a href="/pelicula">Agregar Pelicula</a>	
+	</div>
+	<div>
+	<h3>LISTA DE USUARIOS</h3>
 	<table cellpading="7" border="2" bgcolor="green"->
 		<tr> 
 			<th>DNI</th>
@@ -53,6 +59,12 @@
 					</tr>
 				</table>
 			</div>
+			<div>
+				<a href="/usuario">Agregar Usuario</a>	
+			</div>
+	<div>
+		<a href="/login">Cerrar Sesión</a>	
+	</div>
 			<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
 			type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
 		<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}"

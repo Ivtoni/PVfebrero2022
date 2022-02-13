@@ -1,24 +1,57 @@
 <!DOCTYPE html>
-<htmlxmlns : th="http://www.thymeleaf.org">
+<html xmlns : th="http://www.thymeleaf.org">
 <head>
-	<tittle>ADMINISTRAR CINE</tittle>
+	<tittle>CINE</tittle>
 </head>
 <body>
-	<h1>Lista de Peliculas</h1>
-	<table cellpading="7" border="2" bgcolor="green"->
-		<tr>
-			<th>Nombre</th>
-			<th>Descripción</th>
-			<th>Duración</th>
-			<th>Actores</th>
-			<th>Director</th>
-		</tr>
-		<tr th:each="peli:${lista}" >
-			<td th:text="${peli.nombre}"></td>
-			<td th:text="${peli.descripcion}"></td>
-			<td th:text="${peli.duracion}"></td>
-			<td th:text="${peli.actor}"></td>
-			<td th:text="${peli.direcotr}"></td>
-		</tr>
-	</table>
+<div class="container">
+<div class="form">
+<h1>Administrador de Peliculas</h1>
+			<form th:object="${unaPeli}" th:action="${editMode}?@{/pelicula/modificar}:@{/pelicula/guardar}" method="post">
+				<div class="row mb-3">
+					<label for="cod" class="cd-sm-2" col.form-label>Código</label>
+					<div class= col-sm-10>
+					<input type="text" id="cod" th:field="*{codPeli}" class="form-control">
+					</div>
+				</div>
+				<div class="row mb-3">
+					<label for="nombre" class="cd-sm-2" col.form-label>Nombre</label>
+					<div class= col-sm-10>
+					<input type="text" id="nombre" th:field="*{nombre}" class="form-control">
+					</div>
+				</div>
+					<div class="row mb-3">
+					<label for="descripcion" class="cd-sm-2" col.form-label>Descripción</label>
+					<div class= col-sm-10>
+					<input type="text" id="descripcion" th:field="*{descripcion}" class="form-control">
+					</div>
+				</div>
+				<div class="row mb-3">
+					<label for="duracion" class="cd-sm-2" col.form-label>Duración</label>
+					<div class= col-sm-10>
+					<input type="number" id="duracion" th:field="*{duracion}" class="form-control">
+					</div>
+				</div>
+					<div class="row mb-3">
+					<label for="actores" class="cd-sm-2" col.form-label>Actores</label>
+					<div class= col-sm-10>
+					<input type="text" id="actores" th:field="*{actor}" class="form-control">
+					</div>
+				</div>
+					<div class="row mb-3">
+					<label for="director" class="cd-sm-2" col.form-label>Director</label>
+					<div class= col-sm-10>
+					<input type="text" id="director" th:field="*{director}" class="form-control">
+					</div>
+				</div>
+			<div class="col-12">
+				<input type="submit" class="buttons" th:value="${editMode}?'Modificar Pelicula':'Crear Pelicula'">
+			</div>
+			</form>
+</div>
+</div>
+
+</body>
+</html>
+
 			

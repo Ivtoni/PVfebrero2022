@@ -3,7 +3,7 @@ package ar.edu.unju.edm.service.imp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.edm.model.Usuario;
@@ -19,10 +19,10 @@ public class UsuarioServiceMySQL implements IUsuarioService{
 
 	@Override
 	public void guardarUsuario(Usuario unUsuario) {
-		// TODO Auto-generated method stub
-	//String pw = unUsuario.getPassword();
-		//BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
-	//	unUsuario.setPassword(bCryptPasswordEncoder.encode(pw));
+		 //TODO Auto-generated method stub
+		String pw = unUsuario.getPassword();
+		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
+		unUsuario.setPassword(bCryptPasswordEncoder.encode(pw));
 	
 		usuarioDAO.save(unUsuario);
 	}

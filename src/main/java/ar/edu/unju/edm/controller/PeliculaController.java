@@ -19,17 +19,17 @@ public class PeliculaController {
 	public String cargarPelicula(Model model) {
 		model.addAttribute("lista", unaPeli.obtenerTodasPelis());	
 		model.addAttribute("unaPeli", unaPeli.crearPeli() );
-			return "pelicula";
+			return ("pelicula");
 }
 	@PostMapping("/pelicula/guardar")
 	public String guardarPelicula(@ModelAttribute ("unaPeli") Pelicula unaPelicula, Model model) {
 		unaPeli.guardarPeli(unaPelicula);
-		return "redirect:/cliente";
+		return "redirect:/lista";
 }
 	@GetMapping("/pelicula/editar/{codPeli}")
-	public String editarPelicula(Model model, @PathVariable(name="codPeli") int codPeli) throws Exception {
+	public String editarPelicula(Model model, @PathVariable(name="codPeli") int cod) throws Exception {
 		try {
-			Pelicula peliculaEncontrada = unaPeli.encontrarPeli(codPeli);
+			Pelicula peliculaEncontrada = unaPeli.encontrarPeli(cod);
 			model.addAttribute("unaPeli", peliculaEncontrada);	
 			model.addAttribute("editMode", "true");
 		}
@@ -39,17 +39,17 @@ public class PeliculaController {
 			model.addAttribute("editMode", "false");
 		}
 		model.addAttribute("lista", unaPeli.obtenerTodasPelis());
-		return("cliente");
+		return ("pelicula");
 	}
 	@PostMapping ("/pelicula/modificar")
-	public String modificarPelicula(@ModelAttribute("unaPeli") Pelicula unaPelicula, Model model) {
+	public String modificarPelicula(@ModelAttribute ("unaPeli") Pelicula unaPelicula, Model model) {
 		try {
 			unaPeli.modificarPeli(unaPelicula);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/pelicula";
+		return "redirect:/lista";
 	}
 	@GetMapping("/pelicula/eliminar/{codPeli}")
 	public String eliminarPelicula(Model model, @PathVariable(name="codPeli") int codPeli) {
@@ -58,7 +58,11 @@ public class PeliculaController {
 		catch(Exception e){
 			model.addAttribute("listErrorMessage",e.getMessage());
 		}			
-		return "redirect:/pelicula";
+		return "redirect:/lista";
 	}
-
+	@GetMapping ("/listaPelis")
+	public String mostrarLista(Model model) {
+		model.addAttribute("listapeli", unaPeli.obtenerTodasPelis());
+		return ("pelisUsuario");
+}
 }

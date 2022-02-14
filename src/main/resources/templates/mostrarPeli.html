@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns : th="http://www.thymeleaf.org">
+<head>
+<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}" />
+<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
+<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} " />
+<meta charset="UTF-8">
+	<tittle>CINE</tittle>
+</head>
+<body>
+<div class="container">
+<div class="form">
+<h1>Has elegido ver:</h1>
+			<form th:object="${unaPeli}" th:action="${editMode}?@{/pelicula/modificar}:@{/pelicula/guardar}" method="post" enctype="multipart/form-data">
+				 <fieldset disabled="disabled">
+				<div class="row mb-3">
+					<label for="nombre" class="cd-sm-2" col.form-label></label>
+					<div class= col-sm-10>
+					<input type="text" id="nombre" th:field="*{nombre}" class="form-control">
+					</div>
+				</div>
+					<div class="row mb-3">
+					<label for="descripcion" class="cd-lg-2" col.form-label>Descripción</label>
+					<div class= col-sm-10>
+					<input type="text" id="descripcion" th:field="*{descripcion}" class="form-control">
+					</div>
+				</div>
+				<div class="row mb-3">
+					<label for="duracion" class="cd-sm-2" col.form-label>Duración</label>
+					<div class= col-sm-10>
+					<input type="number" id="duracion" th:field="*{duracion}" class="form-control">
+					</div>
+				</div>
+					<div class="row mb-3">
+					<label for="actores" class="cd-sm-2" col.form-label>Actores</label>
+					<div class= col-sm-10>
+					<input type="text" id="actores" th:field="*{actor}" class="form-control">
+					</div>
+				</div>
+					<div class="row mb-3">
+					<label for="director" class="cd-sm-2" col.form-label>Director</label>
+					<div class= col-sm-10>
+					<input type="text" id="director" th:field="*{director}" class="form-control">
+					</div>
+				</div>
+				 </fieldset>
+			</form>
+</div>
+</div>
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
+			type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
+		<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}"
+			type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
+		<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"
+			type="text/javascript"
+			src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+			
+</body>
+</html>
+
+		

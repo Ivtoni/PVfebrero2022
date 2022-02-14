@@ -6,52 +6,53 @@
 	<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
 	<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} " />
 	<meta charset="UTF-8">
-	<tittle>REGISTRO</tittle>
+	<tittle class="text-light">REGISTRO</tittle>
 </head>
 
 <body>
 	<div class="container">
-		<div class="form row">
-			<form id="formUsuario" th:object="${unUser}" th:action="@{/registro/guardar}" method="post">
-				<div class="row mb-3">
-					<label for="dni" class="col-sm-2 col-form-label">Documento</label>
-					<div class="col-sm-10">
+		<div class="form">
+			<form th:object="${unUser}" th:action="@{/registro/guardar}" method="post" class="form-dark">
+				<div class="input-group mb-3">
+					<label for="dni" class="cd-sm-4 text-center text-light" col.form-label>DNI</label>
+					<div class=col-sm-2>
 						<input type="text" id="dni" th:field="*{dni}" class="form-control">
 					</div>
 				</div>
-				<div class="row mb-3">
-					<label for="apellido" class="col-sm-2 col-form-label">Apellido</label>
-					<div class="col-sm-10">
+				<div class="input-group mb-3">
+					<label for="apellido" class="cd-sm-2 text-center text-light" col.form-label>APELLIDO</label>
+					<div class=col-sm-2>
 						<input type="text" id="apellido" th:field="*{apellido}" class="form-control">
 					</div>
 				</div>
-				<div class="row mb-3">
-					<label for="nombre" class="col-sm2 col-form-label">Nombre</label>
-					<div class="col-sm-10">
+				<div class="input-group mb-3">
+					<label for="nombre" class="cd-sm-2 text-center text-light" col.form-label>NOMBRE</label>
+					<div class=col-sm-2>
 						<input type="text" id="nombre" th:field="*{nombre}" class="form-control">
 					</div>
 				</div>
-				<div class="row mb-3">
-					<label for="correo" class="col-sm2 col-form-label">Mail</label>
-					<div class="col-sm-10">
+				<div class="input-group mb-3">
+					<label for="correo" class="cd-sm-2 text-center text-light" col.form-label>CORREO</label>
+					<div class=col-sm-3>
 						<input type="text" id="correo" th:field="*{mail}" class="form-control">
 					</div>
 				</div>
-				<div class="row mb-3">
-					<label for="fechaNac" class="col-sm2 col-form-label">Fecha Nacimiento</label>
-					<div class="col-sm-10">
+				<div class="input-group mb-3">
+					<label for="fechaNac" class="cd-sm-4 text-center text-light" col.form-label>FECHA DE NACIMIENTO</label>
+					<div class=col-sm-3>
 						<input type="date" id="fechaNac" th:field="*{fechaNac}" class="form-control">
 					</div>
 				</div>
-				<div class="row mb-3">
-					<label for="password" class="col-sm2 col-form-label">Contraseña</label>
-					<div class="col-sm-10">
-						<input type="password" id="password" th:field="*{password}" class="form-control">
+				<div class="input-group mb-3">
+					<label for="password" class="cd-sm-2 text-center text-light" col.form-label>CONTRASEÑA</label>
+					<div class=col-sm-3>
+						<input type="password" id="password" placeholder="Mínimo 8 caracteres" th:field="*{password}" class="form-control form-dark">
 					</div>
+	
 				</div>
 
 					<div>
-						<button class="btn btn-dark btn-sm3" type="submit" value="Agregar">Registrarse</button>
+						<button class="btn btn-dark btn-sm3" type="submit" value="Agregar">REGISTARSE</button>
 					</div>
 			</form>
 		</div>

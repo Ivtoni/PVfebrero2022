@@ -5,3 +5,18 @@ body {
   background-size: cover;
   color: #FFFF;
 }
+.negro {
+  background-color: rgb(31, 22, 41);
+}
+.naranja{
+	background-color:goldenrod;
+}
+p.grande {font-size: large;}
+p.peque {font-size: small;}
+p.medio {font-size: medium;}
+p.curier {font-family: courier;}
+
+
+
+
+

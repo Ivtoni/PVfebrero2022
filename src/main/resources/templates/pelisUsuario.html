@@ -15,19 +15,16 @@
 		<thead class="table-dark">
 		<tr>
 			<th>NOMBRE</th>
-			<th>DESCRIPCION</th>
 			<th>DURACION</th>
-			<th>REPARTO</th>
-			<th>DIRECTOR/A</th>
+
 		</tr>
 	</thead>
 	<tbody>
 		<tr th:each="peli:${listapeli}" >
 			<td th:text="${peli.nombre}"></td>
-			<td th:text="${peli.descripcion}"></td>
-			<td th:text="${peli.duracion}"></td>
-			<td th:text="${peli.actor}"></td>
-			<td th:text="${peli.director}"></td>
+			<td th:text="${peli.duracion}"></td>>
+			<td><a class="btn btn-dark" th:href="@{'/pelicula/mostrar/'+${peli.codPeli}}">
+									<i class="fa fa-eye"></i></a>
 		</tr>
 	</tbody>
 	</table>

@@ -70,4 +70,19 @@ public class PeliculaController {
 		model.addAttribute("listapeli", unaPeli.obtenerTodasPelis());
 		return ("tablapeli");
 }
+	@GetMapping("/pelicula/mostrar/{codPeli}")
+	public String mostrarPelicula(Model model, @PathVariable(name="codPeli") int cod) throws Exception {
+		try {
+			Pelicula peliculaEncontrada = unaPeli.encontrarPeli(cod);
+			model.addAttribute("unaPeli", peliculaEncontrada);	
+			model.addAttribute("editMode", "true");
+		}
+		catch (Exception e) {
+			model.addAttribute("formUsuarioErrorMessage",e.getMessage());
+			model.addAttribute("unaPeli", unaPeli.crearPeli());
+			model.addAttribute("editMode", "false");
+		}
+		model.addAttribute("lista", unaPeli.obtenerTodasPelis());
+		return ("mostrarPeli");
+	}
 }

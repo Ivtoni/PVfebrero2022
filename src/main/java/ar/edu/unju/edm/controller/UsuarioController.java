@@ -87,5 +87,6 @@ public class UsuarioController {
 	public String mostrarListaAdmin(Model model) {
 		model.addAttribute("lista", unUsuario.obtenerTodosUsuarios());
 		return ("tablausuario");
+
 }
 }

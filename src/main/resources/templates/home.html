@@ -10,14 +10,14 @@
 	<title>Home</title>
 </head>
 <body class="body-home">
+	
 	<div class="container">
 
 		<div class="row align-items-end">
 				<div class="login-box">
 					<form class="login-form" th:action="@{/login}" method="post">
-					<img class="mb-4" src="https://virtualis.idelr.edu.ar/pluginfile.php/407/course/overviewfiles/icono_turis.png"  width="100" height="100">
+					<img class="mb-4" src="https://i.pinimg.com/736x/9e/17/61/9e1761ceb91fdf7460bc4d66f0681f62.jpg"  width="100" height="100">
 						<div class="app-title">
-							<h1>Iniciar Sesion</h1>
 						</div>
 						<br>
 						   <div class="form-group col-12 col-md-12">
@@ -27,24 +27,29 @@
         				  </div>
 
 						  <div class="form-group col-12 col-md-12">
-       						 <label for="password" class="form-label">Contraseña</label> <br>
+       						 <label for="password" class="form-label">CONTRASEÑA</label> 
   							 <input type="password" name="password" placeholder="Ingresar Contraseña" class="form-control">
         				  </div>
-        				  
-						<div class="col-12">
-							<input type="submit" class="btn btn-primary" value="Ingresar">
-						</div>
+        				
+						<div class="col-auto">
+   				 				<button type="submit" class="btn btn-primary mb-3">INGRESAR</button>
+  						</div>
+  						<div>
+  						<br>
+  							<a href="#">¿Olvidaste tu contraseña?</a><br>
+  						</div>
+  						<div>
+  						<br>
+						<a href="/registro">Registrarse</a><br>	
+  						</div>
 						</form>
-						<br>
-						<a href="#">¿Olvidaste tu contraseña?</a><br>
-						<a href="/registro">Registrarse</a>					
-					
+				
 	    	<div th:if="${param.error}" class="alert alert-danger" role="alert">
 				Combinación Invalida de Usuario y Contraseña</div>
 			<div th:if="${param.logout}" class="alert alert-success" role="alert">
 				Ha salido del Sistema. Gracias!</div>
 				
-				</div>
+		</div>
 			</div>
 		</div>
 		

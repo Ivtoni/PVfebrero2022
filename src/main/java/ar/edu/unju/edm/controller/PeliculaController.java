@@ -49,7 +49,7 @@ public class PeliculaController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/lista";
+		return "redirect:/listaPeliAdmin";
 	}
 	@GetMapping("/pelicula/eliminar/{codPeli}")
 	public String eliminarPelicula(Model model, @PathVariable(name="codPeli") int codPeli) {
@@ -58,11 +58,16 @@ public class PeliculaController {
 		catch(Exception e){
 			model.addAttribute("listErrorMessage",e.getMessage());
 		}			
-		return "redirect:/lista";
+		return "redirect:/listaPeliAdmin";
 	}
 	@GetMapping ("/listaPelis")
 	public String mostrarLista(Model model) {
 		model.addAttribute("listapeli", unaPeli.obtenerTodasPelis());
 		return ("pelisUsuario");
+}
+	@GetMapping ("/listaPeliAdmin")
+	public String mostrarListaAdmin(Model model) {
+		model.addAttribute("listapeli", unaPeli.obtenerTodasPelis());
+		return ("tablapeli");
 }
 }

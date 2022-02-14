@@ -1,47 +1,57 @@
 <!DOCTYPE html>
-<html xmlns:th ="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <link th:rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}" />
 <link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
 <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} " />
 <meta charset="UTF-8">
-	<tittle>Peliculas Disponibles</tittle>
+	<tittle>ADMIN</tittle>
 </head>
 <body>
 <div class="container">
-<div>
-	<h3>Estrenos</h3>
+	<div th:insert="layout/header :: header"></div>
+	<div>
 	<table class="table table-center table-bordered text-center">
 		<thead class="table-dark">
 		<tr>
+			<th></th>
+			<th>ID</th>
 			<th>NOMBRE</th>
 			<th>DESCRIPCION</th>
 			<th>DURACION</th>
-			<th>REPARTO</th>
-			<th>DIRECTOR/A</th>
+			<th>ACTORES</th>
+			<th>DIRECTOR</th>
+			<th>EDITAR</th>
+			<th>BORRAR</th>
 		</tr>
-	</thead>
-	<tbody>
-		<tr th:each="peli:${listapeli}" >
+		</thead>
+		<tbody>
+		<tr th:each="peli :${listapeli}" >
+			<td th:byte[]="${peli.fotografia}"></td>
+			<td class="table-dark text-light" th:text="${peli.codPeli}"></td>
 			<td th:text="${peli.nombre}"></td>
 			<td th:text="${peli.descripcion}"></td>
 			<td th:text="${peli.duracion}"></td>
 			<td th:text="${peli.actor}"></td>
 			<td th:text="${peli.director}"></td>
+			<td><a class="btn btn-dark" th:href="@{'/pelicula/editar/'+${peli.codPeli}}">
+									<i class="fa fa-edit"></i></a>
+			<td><a class="btn btn-dark" th:href="@{'/pelicula/eliminar/'+${peli.codPeli}}">
+									<i class="fa fa-trash-alt"></i></a>
 		</tr>
-	</tbody>
+		</tbody>
 	</table>
 	</div>
 	<div>
-		<a type="button" class="btn btn-dark btn-sm" href="/login">Cerrar Sesión</a>	
+		<a type="button" class= "btn btn-dark btn-sm" href="/pelicula">Agregar Pelicula</a>	
 	</div>
-</div>
-	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
+			<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
 			type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
 		<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}"
 			type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
 		<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"
 			type="text/javascript"
 			src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+			
 </body>
 </html>

@@ -37,7 +37,7 @@ public class UsuarioController {
 	@PostMapping ("/usuario/guardar")
 	public String guardarUsuarioAdmin(@ModelAttribute ("unUser") Usuario unUsrio, Model model) {
 		unUsuario.guardarUsuario(unUsrio);
-		return "redirect:/lista";
+		return "redirect:/listaUsuarioAdmin";
 }
 	@GetMapping ("usuario/editar/{dni}")
 	public String editarUsuario(Model model, @PathVariable(name="dni") String dni) throws Exception {
@@ -64,7 +64,7 @@ public class UsuarioController {
 			e.printStackTrace();
 		}
 
-		return "redirect:/lista";
+		return "redirect:/listaUsuarioAdmin";
 	}
 	@GetMapping ("/usuario/eliminar/{dni}")
 	public String eliminarUsuario(Model model, @PathVariable (name="dni") String dni) {
@@ -75,12 +75,17 @@ public class UsuarioController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/lista";
+		return "redirect:/listaUsuarioAdmin";
 	}
 	@GetMapping ("/lista")
 	public String mostrarLista(Model model) {
 		model.addAttribute("lista", unUsuario.obtenerTodosUsuarios());
 		model.addAttribute("listapeli", unaPeli.obtenerTodasPelis());
 		return ("mostrar");
+}
+	@GetMapping ("/listaUsuarioAdmin")
+	public String mostrarListaAdmin(Model model) {
+		model.addAttribute("lista", unUsuario.obtenerTodosUsuarios());
+		return ("tablausuario");
 }
 }

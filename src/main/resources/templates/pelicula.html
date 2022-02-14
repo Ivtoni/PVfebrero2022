@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html xmlns : th="http://www.thymeleaf.org">
 <head>
+<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}" />
+<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
+<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} " />
+<meta charset="UTF-8">
 	<tittle>CINE</tittle>
 </head>
 <body>
 <div class="container">
 <div class="form">
 <h1>Administrador de Peliculas</h1>
-			<form th:object="${unaPeli}" th:action="${editMode}?@{/pelicula/modificar}:@{/pelicula/guardar}" method="post">
+			<form th:object="${unaPeli}" th:action="${editMode}?@{/pelicula/modificar}:@{/pelicula/guardar}" method="post" enctype="multipart/form-data">
 				<div class="row mb-3">
 					<label for="cod" class="cd-sm-2" col.form-label>Código</label>
 					<div class= col-sm-10>
@@ -21,7 +25,7 @@
 					</div>
 				</div>
 					<div class="row mb-3">
-					<label for="descripcion" class="cd-sm-2" col.form-label>Descripción</label>
+					<label for="descripcion" class="cd-lg-2" col.form-label>Descripción</label>
 					<div class= col-sm-10>
 					<input type="text" id="descripcion" th:field="*{descripcion}" class="form-control">
 					</div>
@@ -44,13 +48,25 @@
 					<input type="text" id="director" th:field="*{director}" class="form-control">
 					</div>
 				</div>
+				<div class="form-group col-12 col-md-4">
+			       <label for="file" class="col-sm-4 col-form-label" > Subir Imagen </label>
+				<input type="file" name="foto" class="form-control-file" id="file" accept="image/x-png,image/gif,image/jpeg,image/png,image/jpeg" onchange="loadFile(event)">
+						 <img th:src="*{'data:;base64,'+ fotografia}" id="output" style="padding-top: 2px; width: 100px;" />
+	            </div>
 			<div class="col-12">
-				<input type="submit" class="buttons" th:value="${editMode}?'Modificar Pelicula':'Crear Pelicula'">
+				<input type="submit" class="btn btn-dark btn-sm" th:value="${editMode}?'Modificar Pelicula':'Crear Pelicula'">
 			</div>
 			</form>
 </div>
 </div>
-
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
+			type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
+		<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}"
+			type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
+		<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"
+			type="text/javascript"
+			src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+			
 </body>
 </html>
 

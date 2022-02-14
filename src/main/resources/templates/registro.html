@@ -48,8 +48,16 @@
 					<div class=col-sm-3>
 						<input type="password" id="password" placeholder="Mínimo 8 caracteres" th:field="*{password}" class="form-control form-dark">
 					</div>
-	
 				</div>
+						<div class="row mb.3">
+				<label for="tipo" class="col-sm-2 col-form-label">Tipo</label> 
+			<div class="col-sm-10">
+			     <select id="tipo" th:field="*{tipoUsuario}" class="form-control" > 
+			          <option value="Cliente">Cliente</option>
+			          <option value="Admin">Admin</option>
+			     </select>
+			</div>
+		</div>
 
 					<div>
 						<button class="btn btn-dark btn-sm3" type="submit" value="Agregar">REGISTARSE</button>

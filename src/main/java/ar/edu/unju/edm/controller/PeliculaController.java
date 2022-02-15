@@ -1,5 +1,8 @@
 package ar.edu.unju.edm.controller;
 
+import java.io.IOException;
+import java.util.Base64;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import ar.edu.unju.edm.model.Pelicula;
 import ar.edu.unju.edm.services.IPeliculaService;
@@ -21,8 +26,11 @@ public class PeliculaController {
 		model.addAttribute("unaPeli", unaPeli.crearPeli() );
 			return ("pelicula");
 }
-	@PostMapping("/pelicula/guardar")
-	public String guardarPelicula(@ModelAttribute ("unaPeli") Pelicula unaPelicula, Model model) {
+	@PostMapping(value="/pelicula/guardar", consumes = "multipart/form-data")
+	public String guardarPelicula(@ModelAttribute ("unaPeli") Pelicula unaPelicula, Model model, @RequestParam("foto") MultipartFile file) throws IOException {
+		byte[] content = file.getBytes();
+		 String base64 = Base64.getEncoder().encodeToString(content);
+		 unaPelicula.setFotografia(base64);
 		unaPeli.guardarPeli(unaPelicula);
 		return "redirect:/lista";
 }
@@ -41,9 +49,17 @@ public class PeliculaController {
 		model.addAttribute("lista", unaPeli.obtenerTodasPelis());
 		return ("pelicula");
 	}
-	@PostMapping ("/pelicula/modificar")
-	public String modificarPelicula(@ModelAttribute ("unaPeli") Pelicula unaPelicula, Model model) {
+	@PostMapping(value="/pelicula/modificar", consumes = "multipart/form-data")
+	public String modificarPelicula(@ModelAttribute ("unaPeli") Pelicula unaPelicula, Model model, @RequestParam("foto") MultipartFile file) {
 		try {
+			byte[] content = file.getBytes();
+			 String base64 = Base64.getEncoder().encodeToString(content);
+			 if (base64.equals("")) {
+			 
+			 }
+			 else {
+				 unaPelicula.setFotografia(base64);
+			 }
 			unaPeli.modificarPeli(unaPelicula);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -75,14 +91,11 @@ public class PeliculaController {
 		try {
 			Pelicula peliculaEncontrada = unaPeli.encontrarPeli(cod);
 			model.addAttribute("unaPeli", peliculaEncontrada);	
-			model.addAttribute("editMode", "true");
 		}
 		catch (Exception e) {
 			model.addAttribute("formUsuarioErrorMessage",e.getMessage());
-			model.addAttribute("unaPeli", unaPeli.crearPeli());
-			model.addAttribute("editMode", "false");
 		}
-		model.addAttribute("lista", unaPeli.obtenerTodasPelis());
 		return ("mostrarPeli");
 	}
 }
+

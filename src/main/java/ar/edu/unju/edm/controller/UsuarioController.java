@@ -1,6 +1,9 @@
 package ar.edu.unju.edm.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -78,7 +81,14 @@ public class UsuarioController {
 		return "redirect:/listaUsuarioAdmin";
 	}
 	@GetMapping ("/lista")
-	public String mostrarLista(Model model) {
+	public String mostrarLista(Model model) throws Exception {
+		Authentication auth = SecurityContextHolder
+	            .getContext()
+	            .getAuthentication();
+	    UserDetails userDetail = (UserDetails) auth.getPrincipal();
+
+		Usuario logueado = unUsuario.encontrarUsuario(userDetail.getUsername());
+		model.addAttribute("perfil", logueado);
 		model.addAttribute("lista", unUsuario.obtenerTodosUsuarios());
 		model.addAttribute("listapeli", unaPeli.obtenerTodasPelis());
 		return ("mostrar");

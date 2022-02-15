@@ -1,0 +1,122 @@
+
+
+
+
+<div class="container">
+<div class="row">
+<div class="col-lg-6">
+<div class="card">
+<div class="card-head">
+	<h3>Estrenos</h3>
+</div>
+<div class="card-body">
+	<table class="table table-center table-borderless text-center">
+		<thead class="table-dark">
+		<tr>
+			<th>NOMBRE</th>
+			<th>DURACION</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="peli :${listapeli}">
+			<td th:text="${peli.nombre}"></td>
+			<td th:text="${peli.duracion}"></td>>
+			<td><a class="btn btn-dark" th:href="@{'/pelicula/mostrar/'+${peli.codPeli}}">
+									<i class="fa fa-eye"></i></a>
+			<td><a class="btn btn-dark" th:href="@{'/pelicula/mostrar/'+${peli.codPeli}}">
+			<i class="fa fa-ticket-simple"></i></a> 
+		</tr>
+	</tbody>
+	</table>
+</div>
+	<div class="card-footer">
+		<a type="button" class="btn btn-dark btn-sm" href="/login">Cerrar Sesión</a>	
+	</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+<body>
+<div class="album py-5">
+		<div class="container">
+		
+			<div class="row row-cols-1 row-cols-sm-3 g-3">
+				<div th:each="p : ${listapeli}">
+					<div class="col lg-4 mb-4">
+						<div class="card border border-dark">
+							<img onerror="this.src='/img/recursolisto.png';" th:src="*{'data:;base64,'+p.fotografia}" class="card-img-top" style="height:250px">
+							<!--  <img th:src="*{'data:;base64,'+p.fotografias.get('0').imagen}" class="card-img-top" alt="hola"> -->
+						</div>
+						<div class="card-body border border-dark">
+							<span class="badge bg-success text-light" th:text="${p.duracion}"></span>
+							<p class="card-text" th:text="${p.nombre}"></p>
+							<p class="card-text" th:text="${p.descripcion}"></p>
+							<p class="card-tex" th:text="${p.actor}"></p>
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="btn-group">
+									<a class="btn btn-dark" th:href="@{'/pelicula/mostrar/'+${peli.codPeli}}">
+									<i class="fa fa-ticket-simple"></i></a> 
+								</div>
+								<small class="text-muted" th:text="${p.director}"></small>
+							</div>
+						</div>
+					</div>
+					<br>
+				</div>
+			</div>
+		</div>
+	</div
+		
+		
+		
+		
+		
+		
+		<div class="container">
+<div class="form">
+<h1>Has elegido ver:</h1>
+			<form th:object="${unaPeli}" th:action="${editMode}?@{/pelicula/modificar}:@{/pelicula/guardar}" method="post" enctype="multipart/form-data">
+				 <fieldset disabled="disabled">
+				<div class="row mb-3">
+					<label for="nombre" class="cd-sm-2" col.form-label></label>
+					<div class= col-sm-10>
+					<input type="text" id="nombre" th:field="*{nombre}" class="form-control">
+					</div>
+				</div>
+					<div class="row mb-3">
+					<label for="descripcion" class="cd-lg-2" col.form-label>Descripción</label>
+					<div class= col-sm-10>
+					<input type="text" id="descripcion" th:field="*{descripcion}" class="form-control">
+					</div>
+				</div>
+				<div class="row mb-3">
+					<label for="duracion" class="cd-sm-2" col.form-label>Duración</label>
+					<div class= col-sm-10>
+					<input type="number" id="duracion" th:field="*{duracion}" class="form-control">
+					</div>
+				</div>
+					<div class="row mb-3">
+					<label for="actores" class="cd-sm-2" col.form-label>Actores</label>
+					<div class= col-sm-10>
+					<input type="text" id="actores" th:field="*{actor}" class="form-control">
+					</div>
+				</div>
+					<div class="row mb-3">
+					<label for="director" class="cd-sm-2" col.form-label>Director</label>
+					<div class= col-sm-10>
+					<input type="text" id="director" th:field="*{director}" class="form-control">
+					</div>
+				</div>
+				 </fieldset>
+			</form>
+			<div>
+		<a type="button" class="btn btn-dark btn-sm" href="#">Comprar Entrada</a>	
+	</div>
+</div>
+</div>

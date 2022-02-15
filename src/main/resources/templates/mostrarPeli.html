@@ -8,43 +8,14 @@
 	<tittle>CINE</tittle>
 </head>
 <body>
-<div class="container">
-<div class="form">
-<h1>Has elegido ver:</h1>
-			<form th:object="${unaPeli}" th:action="${editMode}?@{/pelicula/modificar}:@{/pelicula/guardar}" method="post" enctype="multipart/form-data">
-				 <fieldset disabled="disabled">
-				<div class="row mb-3">
-					<label for="nombre" class="cd-sm-2" col.form-label></label>
-					<div class= col-sm-10>
-					<input type="text" id="nombre" th:field="*{nombre}" class="form-control">
-					</div>
-				</div>
-					<div class="row mb-3">
-					<label for="descripcion" class="cd-lg-2" col.form-label>Descripción</label>
-					<div class= col-sm-10>
-					<input type="text" id="descripcion" th:field="*{descripcion}" class="form-control">
-					</div>
-				</div>
-				<div class="row mb-3">
-					<label for="duracion" class="cd-sm-2" col.form-label>Duración</label>
-					<div class= col-sm-10>
-					<input type="number" id="duracion" th:field="*{duracion}" class="form-control">
-					</div>
-				</div>
-					<div class="row mb-3">
-					<label for="actores" class="cd-sm-2" col.form-label>Actores</label>
-					<div class= col-sm-10>
-					<input type="text" id="actores" th:field="*{actor}" class="form-control">
-					</div>
-				</div>
-					<div class="row mb-3">
-					<label for="director" class="cd-sm-2" col.form-label>Director</label>
-					<div class= col-sm-10>
-					<input type="text" id="director" th:field="*{director}" class="form-control">
-					</div>
-				</div>
-				 </fieldset>
-			</form>
+<div class="card mb-3">
+<div th:each="p: ${unaPeli}">
+  <img th:src="*{'data:;base64,'+p.fotografia}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title" th:text="${p.nombre}"></h5>
+    <p class="card-text" th:text="${p.descripcion}"></p>
+    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  </div>
 </div>
 </div>
 <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
@@ -58,4 +29,7 @@
 </body>
 </html>
 
-		
+
+
+
+

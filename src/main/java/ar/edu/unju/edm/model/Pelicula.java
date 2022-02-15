@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -22,9 +23,10 @@ public class Pelicula {
 	@Column
 	private String descripcion;
 	@Column
-	private float duracion;
-	@Column
-	private byte[] fotografia;
+	private int duracion;
+	@Lob
+	@Column(name = "imagen", columnDefinition = "LONGBLOB")
+	private String fotografia;
 	@Column
 	private String director;
 	@Column
@@ -35,7 +37,7 @@ public class Pelicula {
 	}
 
 	
-	public Pelicula(int codPeli, String nombre, String descripcion, float duracion, byte[] fotografia, String director,
+	public Pelicula(int codPeli, String nombre, String descripcion, int duracion, String fotografia, String director,
 			String actor) {
 		super();
 		this.codPeli = codPeli;
@@ -72,20 +74,20 @@ public class Pelicula {
 		this.descripcion = descripcion;
 	}
 
-	public float getDuracion() {
+	public int getDuracion() {
 		return duracion;
 	}
 
-	public void setDuracion(float duracion) {
+	public void setDuracion(int duracion) {
 		this.duracion = duracion;
 	}
 
-	public byte[] getFotografia() {
+	public String getFotografia() {
 		return fotografia;
 	}
 
-	public void setFotografia(byte[] fotografia) {
-		this.fotografia = fotografia;
+	public void setFotografia(String base64) {
+		this.fotografia = base64;
 	}
 
 	public String getDirector() {

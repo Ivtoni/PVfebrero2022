@@ -42,7 +42,9 @@ public class PeliculaServiceMySQL implements IPeliculaService{
 	private void cambiarPeli(Pelicula desde, Pelicula hacia) {
 		hacia.setNombre(desde.getNombre());
 		hacia.setDescripcion(desde.getDescripcion());
-		hacia.setFotografia(desde.getFotografia());
+		if (desde.getFotografia()!= null) {
+			hacia.setFotografia(desde.getFotografia());
+		}
 		hacia.setDirector(desde.getDirector());
 		hacia.setActor(desde.getActor());
 	}
